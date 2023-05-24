@@ -1,0 +1,35 @@
+    sudo apt-get update
+    sudo apt install default-jre
+    sudo apt install default-jdk 
+
+It will take some time to download and install so sit back and wait.
+Once it’s done then we have to add the JAVA_HOME to the Ubuntu environment. Run the following in a terminal to open up the /etc/environment file.
+
+      sudo gedit /etc/environment
+
+
+Now, append the following at the end of the file and save it:
+
+      JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+We will set the CLASSPATH in the .bashrc file of the current user so open a terminal and run the following
+
+     sudo gedit /home/vboxuser/.bashrc
+
+Provide the password and add the following lines at the end of the opened file and save it.
+
+        CLASSPATH=".:/home/vboxuser/Desktop/cloudsim-3.0.3/jars/*:
+        /home/vboxuser/Desktop/cloudsim-3.0.3/examples"
+         export CLASSPATH
+         
+
+Now we need to reload the .bashrc file so close the all opened terminals (if any) and run the following
+
+        source ~/.bashrc
+
+Step 3: Testing the Setup (Compiling and Executing a CloudSim Application)
+
+      javac /home/vboxuser/Desktop/cloudsim-3.0.3/examples/org/cloudbus/cloudsim/examples/CloudSimExample1.java
+      
+  Running the compiled program: The syntax for running a compiled CloudSim program is similar to that of running a program in Java i.e. java filename. In our case we have to type (see image 1)
+        java org.cloudbus.cloudsim.examples.CloudSimExample1
